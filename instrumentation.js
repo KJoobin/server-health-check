@@ -1,3 +1,5 @@
+import { performHealthCheck } from './services/monitoringService';
+
 export async function register() {
   if (process.env.NEXT_RUNTIME === 'nodejs') {
     // 서버 시작 시 모니터링 시작
@@ -34,36 +36,20 @@ async function startMonitoring() {
     console.log(`   ${index + 1}. ${ep}`);
   });
 
-  // 헬스체크 수행 함수
-  const performHealthCheck = async () => {
+  // 헬스체크 수행 함수 (직접 함수 호출, API 호출 아님)
+  const performCheck = async () => {
     try {
-      const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000';
-      
-      // health-status API를 호출하여 헬스체크 수행
-      try {
-        const response = await fetch(`${baseUrl}/api/health-status`, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-        });
-        
-        if (!response.ok) {
-          console.error('헬스체크 API 호출 실패:', response.status);
-        }
-      } catch (err) {
-        console.error('헬스체크 수행 실패:', err);
-      }
+      await performHealthCheck();
     } catch (error) {
-      console.error('헬스체크 수행 중 오류:', error);
+      console.error('헬스체크 수행 실패:', error);
     }
   };
 
   // 즉시 한 번 실행
-  await performHealthCheck();
+  await performCheck();
 
   // 1분(60초)마다 실행
-  setInterval(performHealthCheck, 60000);
+  setInterval(performCheck, 60000);
   
   console.log('✅ 모니터링이 시작되었습니다. (1분마다 자동 체크)');
 }
