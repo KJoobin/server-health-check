@@ -10,6 +10,7 @@ export const checkServerHealth = async (serverUrl) => {
   const startTime = Date.now();
   
   try {
+    console.log('checke server health', serverUrl);
     // GraphQL 엔드포인트에 간단한 introspection 쿼리 전송
     const response = await axios.post(
       serverUrl,
@@ -30,6 +31,8 @@ export const checkServerHealth = async (serverUrl) => {
     // GraphQL 응답 확인
     const hasData = response.data && (response.data.data || response.data.errors);
     const isSuccess = response.status >= 200 && response.status < 400 && hasData;
+
+    console.log('check server health result', isSuccess);
 
     return {
       success: isSuccess,

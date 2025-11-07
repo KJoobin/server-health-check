@@ -1,8 +1,10 @@
 import { NextResponse } from 'next/server';
-import { performHealthCheck, getHealthStatuses, getErrorPeriods, getCheckHistories } from '@/services/monitoringService';
+import { getHealthStatuses, getErrorPeriods, getCheckHistories } from '@/services/monitoringService';
 
 /**
  * 헬스체크 상태 조회 API
+ * 실제 API 호출 없이 저장된 상태값만 반환합니다.
+ * 헬스체크는 서버 시작 시 자동으로 시작되며, 1분마다 자동으로 수행됩니다.
  */
 export async function GET() {
   return NextResponse.json({
@@ -10,23 +12,4 @@ export async function GET() {
     errorPeriods: getErrorPeriods(),
     histories: getCheckHistories(),
   });
-}
-
-/**
- * 헬스체크 수행 API (수동 호출용)
- */
-export async function POST() {
-  try {
-    await performHealthCheck();
-    return NextResponse.json({
-      success: true,
-      message: '헬스체크가 수행되었습니다.',
-    });
-  } catch (error) {
-    console.error('헬스체크 수행 실패:', error);
-    return NextResponse.json(
-      { success: false, message: error.message },
-      { status: 500 }
-    );
-  }
 }
