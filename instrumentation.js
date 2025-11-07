@@ -2,13 +2,18 @@ import { performHealthCheck } from './services/monitoringService';
 
 export async function register() {
   if (process.env.NEXT_RUNTIME === 'nodejs') {
-    // 서버 시작 시 모니터링 시작
-    await startMonitoring();
+    // Vercel 환경에서는 Cron Jobs를 사용하므로 instrumentation에서 자동 시작하지 않음
+    // 로컬 개발 환경에서만 자동 시작
+    if (process.env.VERCEL !== '1') {
+      await startMonitoring();
+    } else {
+      console.log('📡 Vercel 환경 감지: Cron Jobs를 사용하여 헬스체크를 수행합니다.');
+    }
   }
 }
 
 async function startMonitoring() {
-  console.log('🚀 서버 헬스체크 모니터링 시작...');
+  console.log('🚀 서버 헬스체크 모니터링 시작 (로컬 개발 환경)...');
   
   // 환경 변수에서 엔드포인트 목록 가져오기
   const endpointsEnv = process.env.HEALTH_CHECK_ENDPOINTS;
