@@ -1,0 +1,305 @@
+.health-check-monitor {
+  background: transparent;
+}
+
+.status-summary {
+  margin-bottom: 32px;
+}
+
+.status-summary h2 {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #1a1a1a;
+  letter-spacing: -0.3px;
+}
+
+.last-update {
+  color: #666;
+  font-size: 14px;
+  margin: 0;
+  font-weight: 400;
+}
+
+.loading {
+  text-align: center;
+  padding: 60px 20px;
+  color: #666;
+  font-size: 16px;
+}
+
+.endpoints-status-container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.endpoint-status-card {
+  background: white;
+  border: 1px solid #e5e5e5;
+  border-radius: 8px;
+  padding: 24px;
+  transition: box-shadow 0.2s;
+}
+
+.endpoint-status-card:hover {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.endpoint-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.endpoint-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin: 0;
+  word-break: break-all;
+  flex: 1;
+  letter-spacing: -0.2px;
+}
+
+.status-badge {
+  padding: 4px 12px;
+  border-radius: 4px;
+  font-size: 13px;
+  font-weight: 500;
+  white-space: nowrap;
+  margin-left: 16px;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+.status-badge.healthy {
+  background: #e6f7e6;
+  color: #10b981;
+}
+
+.status-badge.unhealthy {
+  background: #fee2e2;
+  color: #ef4444;
+}
+
+.status-badge.unknown {
+  background: #f3f4f6;
+  color: #6b7280;
+}
+
+.status-indicator-section {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.status-indicator {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.status-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.status-dot.healthy {
+  background: #10b981;
+}
+
+.status-dot.unhealthy {
+  background: #ef4444;
+}
+
+.status-dot.unknown {
+  background: #9ca3af;
+}
+
+.status-label {
+  font-size: 14px;
+  font-weight: 500;
+  color: #1a1a1a;
+}
+
+.status-info {
+  flex: 1;
+}
+
+.status-message {
+  font-size: 14px;
+  color: #666;
+  margin: 0 0 8px 0;
+  line-height: 1.5;
+}
+
+.response-time {
+  font-size: 13px;
+  color: #9ca3af;
+  margin: 4px 0;
+}
+
+.last-checked {
+  font-size: 13px;
+  color: #9ca3af;
+  margin: 4px 0;
+}
+
+/* 문제 발생 기간 */
+.error-periods-section {
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid #f0f0f0;
+}
+
+.error-periods-section h4 {
+  font-size: 14px;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin: 0 0 12px 0;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+.error-periods-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.error-period-item {
+  padding: 12px 16px;
+  background: #fef2f2;
+  border-left: 3px solid #ef4444;
+  border-radius: 4px;
+  margin-bottom: 8px;
+  color: #991b1b;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.no-issues {
+  margin-top: 20px;
+  padding: 16px;
+  background: #f0fdf4;
+  border-radius: 6px;
+  color: #166534;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 500;
+  border: 1px solid #bbf7d0;
+}
+
+.no-endpoints {
+  padding: 40px 20px;
+  text-align: center;
+  background: white;
+  border: 1px solid #e5e5e5;
+  border-radius: 8px;
+  color: #666;
+  font-size: 14px;
+}
+
+/* 전체 상태 요약 */
+.overall-status {
+  background: white;
+  border: 1px solid #e5e5e5;
+  border-radius: 8px;
+  padding: 24px;
+  margin-bottom: 24px;
+}
+
+.overall-status-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.overall-status-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #1a1a1a;
+}
+
+.overall-status-indicator {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.overall-status-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.overall-status-dot.all-operational {
+  background: #10b981;
+}
+
+.overall-status-dot.some-issues {
+  background: #f59e0b;
+}
+
+.overall-status-dot.all-down {
+  background: #ef4444;
+}
+
+.overall-status-text {
+  font-size: 14px;
+  font-weight: 500;
+  color: #1a1a1a;
+}
+
+.uptime-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.uptime-stat {
+  padding: 16px;
+  background: #f9fafb;
+  border-radius: 6px;
+}
+
+.uptime-stat-label {
+  font-size: 12px;
+  color: #6b7280;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+
+.uptime-stat-value {
+  font-size: 24px;
+  font-weight: 600;
+  color: #1a1a1a;
+  letter-spacing: -0.5px;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.endpoint-status-card {
+  animation: slideIn 0.3s ease-out;
+}
